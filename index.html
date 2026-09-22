@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alibry Creaciones — Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Jost:wght@400;500;600&family=Petit+Formal+Script&display=swap">
+<style>
+:root{
+  --cream:#FFFFFF; --paper:#FFFFFF; --ink:#241B14; --ink-soft:#5A4B3E;
+  --rose:#8C2F45; --rose-soft:#B85A6E; --on-rose:#FFFFFF;
+  --gold:#B78A3D; --gold-soft:#DCC28A; --blush:#FBEEF1; --blush-line:#F4DEE4;
+  --line: rgba(36,27,20,0.12); --shadow: rgba(66,40,30,0.16); --overlay: rgba(28,18,12,0.7);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top: env(safe-area-inset-top,0px);}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:'Jost','Helvetica Neue',Arial,sans-serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+img{max-width:100%; display:block;}
+a{color:inherit;}
+h1,h2,h3{font-family:'Fraunces',Georgia,'Times New Roman',serif; font-weight:500; margin:0; color:var(--ink);}
+.wrap{max-width:1120px; margin:0 auto; padding:0 22px;}
+.oculto{display:none !important;}
+
+header{position:sticky; top:env(safe-area-inset-top,0px); z-index:40; background:color-mix(in srgb, var(--cream) 90%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+.header-row{display:flex; align-items:center; justify-content:space-between; padding:10px 22px; max-width:1120px; margin:0 auto; gap:14px;}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+.brand-name{font-family:'Fraunces',serif; font-size:1.15rem; font-weight:600; color:var(--ink);}
+.wa-pill{display:inline-flex; align-items:center; gap:7px; background:var(--rose); color:var(--on-rose) !important; padding:9px 16px; border-radius:999px; font-size:0.85rem; text-decoration:none; white-space:nowrap;}
+
+.hero{padding:40px 0 28px;}
+.hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center;}
+.hero-copy p.kicker{font-family:'Petit Formal Script',cursive; color:var(--rose); font-size:1.6rem; margin:0 0 2px;}
+.hero-copy h1{font-size:2.3rem; line-height:1.12; max-width:16ch;}
+.hero-copy .sub{margin-top:16px; max-width:44ch; color:var(--ink-soft); font-size:1.02rem;}
+.hero-ctas{display:flex; gap:14px; margin-top:24px; flex-wrap:wrap;}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px; text-decoration:none; font-size:0.94rem; border:1px solid transparent; cursor:pointer; font-family:'Jost',sans-serif; font-weight:500;}
+.btn-primary{background:var(--rose); color:var(--on-rose);}
+.btn-line{border-color:var(--ink); color:var(--ink);}
+.hero-photo{border-radius:10px; aspect-ratio:4/5; background:var(--blush); box-shadow:0 22px 46px var(--shadow); position:relative; display:flex; align-items:center; justify-content:center; color:var(--rose); font-family:'Fraunces',serif; text-align:center; padding:20px;}
+.hero-photo .tag{position:absolute; bottom:-14px; left:-14px; background:var(--paper); border:1px solid var(--line); padding:10px 16px; border-radius:6px; font-family:'Fraunces',serif; font-size:0.88rem; box-shadow:0 10px 22px var(--shadow);}
+@media (max-width:760px){ .hero-grid{grid-template-columns:1fr; gap:24px;} .hero-photo{order:-1; max-width:280px; margin:0 auto 20px;} .hero-copy h1{font-size:1.8rem; max-width:20ch;} }
+
+.promo{background:var(--blush); border-top:1px solid var(--blush-line); border-bottom:1px solid var(--blush-line); padding:16px 0;}
+.promo-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:space-between;}
+.promo-text span{color:var(--ink-soft); font-size:0.93rem;}
+.promo .btn{padding:9px 18px; font-size:0.86rem;}
+
+section.options{padding:44px 0 60px;}
+.cat-head h2{font-size:1.6rem;}
+.cat-head p{color:var(--ink-soft); margin-top:6px; font-size:0.95rem;}
+.options-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:26px;}
+@media (max-width:760px){ .options-grid{grid-template-columns:repeat(2,1fr); gap:12px;} }
+.opt{position:relative; border-radius:14px; overflow:hidden; aspect-ratio:3/4; cursor:pointer; border:none; padding:0; background:var(--blush); box-shadow:0 1px 3px var(--shadow);}
+.opt img{width:100%; height:100%; object-fit:cover;}
+.opt .ov{position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,12,8,0) 38%, rgba(18,11,7,0.82) 100%);}
+.opt .txt{position:absolute; left:0; right:0; bottom:0; padding:14px 14px 16px; text-align:left;}
+.opt .txt h3{color:#FBF3EC; font-size:1rem; line-height:1.2;}
+.opt .txt span{color:rgba(251,243,236,0.82); font-size:0.75rem; display:block; margin-top:3px;}
+.vacio{text-align:center; color:var(--ink-soft); padding:60px 20px; font-size:0.95rem;}
+
+.modal-backdrop{position:fixed; inset:0; background:var(--overlay); display:none; align-items:center; justify-content:center; z-index:100;}
+.modal-backdrop.open{display:flex;}
+.modal{background:var(--paper); max-width:560px; width:92%; border-radius:16px; overflow:hidden; max-height:88vh; display:flex; flex-direction:column; box-shadow:0 30px 60px var(--shadow);}
+.modal .m-head{position:relative; flex:none; padding:20px 54px 16px 22px; border-bottom:1px solid var(--line);}
+.modal .m-head h3{font-size:1.2rem;}
+.modal .m-head p{margin:6px 0 0; color:var(--ink-soft); font-size:0.88rem;}
+.modal .m-close{position:absolute; top:14px; right:14px; width:32px; height:32px; border-radius:50%; border:none; background:var(--blush); color:var(--ink); font-size:1.2rem; cursor:pointer;}
+.modal .m-list{overflow-y:auto; padding:6px 22px 18px;}
+.m-item{display:grid; grid-template-columns:78px 1fr; gap:14px; padding:16px 0; border-bottom:1px solid var(--line);}
+.m-item:last-child{border-bottom:none;}
+.m-item .thumb{width:78px; height:78px; border-radius:8px; overflow:hidden; background:var(--blush); flex:none;}
+.m-item .thumb img{width:100%; height:100%; object-fit:cover;}
+.m-item h4{font-family:'Fraunces',serif; font-weight:500; font-size:1rem; margin:0;}
+.m-item .precio{color:var(--rose); font-weight:600; font-size:0.9rem; margin:3px 0;}
+.m-item p.desc{margin:4px 0 8px; font-size:0.86rem; color:var(--ink-soft);}
+.m-item .mini-link{font-size:0.82rem; color:var(--rose); text-decoration:none; font-weight:500; border-bottom:1px solid var(--rose-soft);}
+
+footer{background:var(--ink); color:var(--cream); padding:40px 0 24px; border-top:4px solid var(--gold);}
+footer .wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:30px;}
+footer h4{font-family:'Fraunces',serif; font-weight:500; font-size:1.05rem; margin:0 0 8px; color:var(--cream);}
+footer p, footer a{color:rgba(251,243,236,0.75); font-size:0.88rem; text-decoration:none; line-height:1.7;}
+@media (max-width:760px){ footer .wrap{grid-template-columns:1fr; gap:22px;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <a href="#top" class="brand">
+      <span class="brand-name" id="header-nombre">Alibry Creaciones</span>
+    </a>
+    <a class="wa-pill" id="wa-pill-header" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="kicker" id="hero-kicker">Alibry Creaciones</p>
+        <h1 id="hero-titulo">El regalo que no se marchita</h1>
+        <p class="sub" id="hero-sub">Ramos eternos, cajas con dulces y creaciones hechas a mano en Susques.</p>
+        <div class="hero-ctas">
+          <a href="#opciones" class="btn btn-primary">Ver productos</a>
+          <a id="hero-wa" href="#" target="_blank" rel="noopener" class="btn btn-line">Escribir por WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <span id="hero-tag-inline">Rosas eternas · no se marchitan</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="promo" id="promo-banner">
+    <div class="wrap promo-row">
+      <div class="promo-text"><span id="promo-texto"></span></div>
+      <a class="btn btn-primary" id="promo-wa" target="_blank" rel="noopener">Consultar</a>
+    </div>
+  </div>
+
+  <section class="options" id="opciones">
+    <div class="wrap">
+      <div class="cat-head">
+        <h2>Elegí una categoría</h2>
+        <p>Tocá cualquier categoría para ver los productos, con precio y descripción.</p>
+      </div>
+      <div class="options-grid" id="optionsGrid"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4 id="footer-nombre">Alibry Creaciones</h4>
+      <p>Tu consulta no molesta. Escribinos por WhatsApp para más información sobre cualquier producto.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a id="footer-wa" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="m-head">
+      <h3 id="modalTitle"></h3>
+      <p id="modalBlurb"></p>
+      <button class="m-close" id="modalClose" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="m-list" id="modalList"></div>
+  </div>
+</div>
+
+<script>
+const CLAVE_CFG = 'tienda_config_v1';
+const CLAVE_PRODUCTOS = 'tienda_productos_v1';
+
+function configPorDefecto(){
+  return {
+    nombre:'Alibry Creaciones',
+    kicker:'Alibry Creaciones',
+    whatsapp:'5493887410344',
+    titulo:'El regalo que no se marchita',
+    sub:'Ramos eternos, cajas con dulces y creaciones hechas a mano en Susques, para cumpleaños, aniversarios y cualquier ocasión que merezca un regalo que dure.',
+    tag:'Rosas eternas · no se marchitan',
+    promo:'Día de las Flores Amarillas. Armamos arreglos especiales para la fecha.'
+  };
+}
+
+function productosPorDefecto(){ return []; }
+
+function obtenerConfig() {
+  try {
+    const g = JSON.parse(localStorage.getItem(CLAVE_CFG));
+    return g ? { ...configPorDefecto(), ...g } : configPorDefecto();
+  } catch(e) { return configPorDefecto(); }
+}
+function guardarConfigStorage(cfg) { localStorage.setItem(CLAVE_CFG, JSON.stringify(cfg)); }
+
+function obtenerProductos() {
+  try {
+    const g = JSON.parse(localStorage.getItem(CLAVE_PRODUCTOS));
+    return g || [];
+  } catch(e) { return []; }
+}
+function guardarProductosStorage(lista) { localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(lista)); }
+
+function waLink(numero, texto) {
+  return `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+}
+function escaparHtml(texto) {
+  const d = document.createElement('div');
+  d.textContent = texto || '';
+  return d.innerHTML;
+}
+
+// ============ CARGA DE DATOS ============
+// 1. Primero intenta traer tienda-datos.json del servidor (GitHub Pages)
+// 2. Si falla, usa localStorage o defaults
+async function cargarDatos() {
+  try {
+    const resp = await fetch('tienda-datos.json', { cache: 'no-store' });
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data.config) guardarConfigStorage({ ...configPorDefecto(), ...data.config });
+      if (Array.isArray(data.productos)) guardarProductosStorage(data.productos);
+    }
+  } catch(e) {
+    console.warn('No se pudo cargar tienda-datos.json, usando localStorage/defaults');
+  }
+  renderPublico();
+}
+
+// ============ RENDER ============
+function renderPublico() {
+  const cfg = obtenerConfig();
+  document.getElementById('header-nombre').textContent = cfg.nombre;
+  document.getElementById('footer-nombre').textContent = cfg.nombre;
+  document.getElementById('hero-kicker').textContent = cfg.kicker;
+  document.getElementById('hero-titulo').textContent = cfg.titulo;
+  document.getElementById('hero-sub').textContent = cfg.sub;
+  document.getElementById('hero-tag-inline').textContent = cfg.tag;
+
+  const mensajeGeneral = `Hola! Vi la página de ${cfg.nombre} y quiero hacer una consulta.`;
+  const linkGeneral = cfg.whatsapp ? waLink(cfg.whatsapp, mensajeGeneral) : '#';
+  document.getElementById('hero-wa').href = linkGeneral;
+  document.getElementById('wa-pill-header').href = linkGeneral;
+  document.getElementById('footer-wa').href = linkGeneral;
+
+  const promo = document.getElementById('promo-banner');
+  if (cfg.promo) {
+    promo.classList.remove('oculto');
+    document.getElementById('promo-texto').textContent = cfg.promo;
+    document.getElementById('promo-wa').href = cfg.whatsapp ? waLink(cfg.whatsapp, `Hola! Quiero consultar por: ${cfg.promo}`) : '#';
+  } else {
+    promo.classList.add('oculto');
+  }
+
+  renderCategorias();
+}
+
+function renderCategorias() {
+  const productos = obtenerProductos();
+  const grid = document.getElementById('optionsGrid');
+
+  document.querySelector('.vacio')?.remove();
+  if (productos.length === 0) {
+    grid.innerHTML = '';
+    const vacio = document.createElement('p');
+    vacio.className = 'vacio';
+    vacio.textContent = 'Todavía no hay productos cargados.';
+    grid.after(vacio);
+    return;
+  }
+
+  const categorias = {};
+  productos.forEach(p => { (categorias[p.categoria] = categorias[p.categoria] || []).push(p); });
+
+  grid.innerHTML = Object.keys(categorias).sort().map(nombreCat => {
+    const items = categorias[nombreCat];
+    const cover = items.find(i => i.imagen)?.imagen || '';
+    const coverHtml = cover
+      ? `<img src="${cover}" alt="${escaparHtml(nombreCat)}">`
+      : `<div style="width:100%;height:100%;background:var(--blush);"></div>`;
+    return `<button class="opt" data-cat="${escaparHtml(nombreCat)}">
+      ${coverHtml}
+      <div class="ov"></div>
+      <div class="txt"><h3>${escaparHtml(nombreCat)}</h3><span>Tocá para ver (${items.length})</span></div>
+    </button>`;
+  }).join('');
+
+  grid.querySelectorAll('[data-cat]').forEach(btn => {
+    btn.addEventListener('click', () => abrirCategoria(btn.dataset.cat));
+  });
+}
+
+function abrirCategoria(nombreCat) {
+  const cfg = obtenerConfig();
+  const productos = obtenerProductos().filter(p => p.categoria === nombreCat);
+
+  document.getElementById('modalTitle').textContent = nombreCat;
+  document.getElementById('modalBlurb').textContent = `${productos.length} producto(s) en esta categoría.`;
+
+  document.getElementById('modalList').innerHTML = productos.map(p => {
+    const msg = `Hola! Vi la página de ${cfg.nombre} y me interesa: ${p.nombre} (${nombreCat}). ¿Me pasás más info?`;
+    const link = cfg.whatsapp ? waLink(cfg.whatsapp, msg) : '#';
+    const thumb = p.imagen ? `<img src="${p.imagen}" alt="${escaparHtml(p.nombre)}">` : '';
+    const precio = p.precio > 0 ? `<div class="precio">$${Number(p.precio).toLocaleString('es-AR')}</div>` : '';
+    return `<div class="m-item">
+      <div class="thumb">${thumb}</div>
+      <div>
+        <h4>${escaparHtml(p.nombre)}</h4>
+        ${precio}
+        <p class="desc">${escaparHtml(p.descripcion)}</p>
+        <a class="mini-link" target="_blank" rel="noopener" href="${link}">Consultar por WhatsApp</a>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('modalBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function cerrarModal() {
+  document.getElementById('modalBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modalClose').addEventListener('click', cerrarModal);
+document.getElementById('modalBackdrop').addEventListener('click', (e) => { if (e.target.id === 'modalBackdrop') cerrarModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarModal(); });
+
+// ============ INICIO ============
+cargarDatos();
+</script>
+</body>
+</html>
