@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Panel Admin — Alibry Creaciones</title>
-<link rel="icon" type="image/png" href="logo-alibry.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Jost:wght@400;500;600&display=swap">
 <style>
@@ -18,9 +17,8 @@
 body{margin:0; background:var(--cream); color:var(--ink); font-family:'Jost',Arial,sans-serif; font-size:16px; line-height:1.6;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);}
 h1,h2{font-family:'Fraunces',serif; font-weight:500; margin:0;}
-header{background:var(--blush); border-bottom:1px solid var(--blush-line); padding:18px 22px; position:sticky; top:env(safe-area-inset-top,0px); z-index:10;}
-.header-row{display:flex; flex-direction:column; align-items:center; justify-content:center; max-width:900px; margin:0 auto; gap:6px; text-align:center;}
-.header-row img.logo-header{width:110px; height:110px; object-fit:contain; border-radius:50%; background:#fff; padding:6px; box-shadow:0 4px 18px rgba(140,47,69,0.18);}
+header{background:var(--blush); border-bottom:1px solid var(--blush-line); padding:16px 22px; position:sticky; top:env(safe-area-inset-top,0px); z-index:10;}
+.header-row{display:flex; align-items:center; justify-content:space-between; max-width:900px; margin:0 auto; gap:12px; flex-wrap:wrap;}
 .admin-wrap{max-width:900px; margin:0 auto; padding:26px 20px 70px;}
 .form-card{background:var(--blush); border:1px solid var(--blush-line); border-radius:12px; padding:22px; margin-bottom:26px;}
 .form-card h2{font-size:1.15rem; margin-bottom:14px;}
@@ -51,36 +49,17 @@ table.tabla-admin img.mini{width:42px; height:42px; object-fit:cover; border-rad
 .estado-gh{font-size:0.8rem; margin-top:8px; color:var(--ink-soft);}
 .estado-gh.ok{color:#356B41;}
 .estado-gh.err{color:#8C2F45;}
-
-/* Portada / primera plana */
-.portada{text-align:center; background:linear-gradient(135deg,#FBEEF1 0%,#FFFFFF 100%);
-  border:1px solid var(--blush-line); border-radius:14px; padding:26px 20px; margin-bottom:26px;}
-.portada img.logo-portada{width:220px; max-width:80%; height:auto; border-radius:16px;
-  box-shadow:0 8px 26px rgba(140,47,69,0.15); margin-bottom:14px; background:#fff; padding:8px;}
-.portada h2{font-family:'Fraunces',serif; font-size:1.5rem; color:var(--rose); margin-bottom:6px;}
-.portada p{font-size:0.9rem; color:var(--ink-soft); max-width:480px; margin:0 auto;}
-.portada .tel{font-size:0.9rem; color:var(--gold); margin-top:10px; font-weight:600;}
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-row">
-    <img src="logo-alibry.png" alt="Alibry Creaciones" class="logo-header">
-    <h1 style="font-size:1.15rem;">Panel Admin · Alibry Creaciones</h1>
+    <h1 style="font-size:1.1rem;">Panel Admin · Alibry Creaciones</h1>
   </div>
 </header>
 
 <div class="admin-wrap">
-
-  <!-- ============ PORTADA / PRIMERA PLANA ============ -->
-  <div class="portada">
-    <img src="logo-alibry.png" alt="Alibry Creaciones" class="logo-portada">
-    <h2>Alibry Creaciones</h2>
-    <p>Ramos eternos, cajas con dulces y creaciones hechas a mano en Susques. Un regalo que no se marchita.</p>
-    <p class="tel">📞 +54 388 7410344</p>
-  </div>
-
   <div class="aviso" id="aviso"></div>
 
   <!-- ============ CONFIGURACIÓN DE GITHUB ============ -->
@@ -407,6 +386,8 @@ async function guardarProducto() {
     imagenFinal = existente ? existente.imagen : null;
   }
 
+  // Si hay archivo nuevo, comprimir y guardar como dataURL temporalmente.
+  // El dataURL se sube a GitHub al publicar.
   if (archivo) {
     try {
       imagenFinal = await comprimirImagen(archivo);
